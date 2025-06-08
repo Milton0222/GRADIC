@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.principal {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(240, 245, 249);
+    overflow: auto;
+}
+
+.principal .menu ul {
+    width: 100%;
+    display: flex;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+}
+
+.principal .menu ul li {
+    list-style: none;
+    margin-top: 5px;
+    padding: auto;
+    margin-right: 10px;
+    font-size: 15pt;
+}
+
+.principal .menu ul a {
+    text-decoration: none;
+    margin: auto;
+    padding: auto;
+}
+
+.principal .content {
+    width: 100%;
+    height: 489px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../imagens/cientifica1.jpg);
+}
+
+.principal .content .up {
+    width: 100%;
+    height: 489px;
+    background: linear-gradient(rgb(4, 4, 4), rgb(19, 117, 10));
+    opacity: 0.8;
+}
+
+.principal .content .up h4 {
+
+    text-align: center;
+    color: white;
+    padding-top: 15%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.principal .content .up .grupo {
+    display: flex;
+    margin-left: 40%;
+}
+
+.principal .content .up .grupo button {
+    padding: auto;
+    width: 120px;
+    height: 35px;
+    margin: 5px;
+    font-size: 15pt;
+    border-radius: 20px;
+    border-style: none;
+    background: linear-gradient(rgb(111, 222, 123), rgb(000, 111, 222));
+
+}
+
+.principal .content .up .grupo button:hover {
+    width: 130px;
+    background: linear-gradient(rgb(000, 111, 222), rgb(111, 222, 123));
+
+}
+
+.principal footer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-top: 5px;
+
+}
+
+.principal footer .info li {
+    list-style: none;
+
+}
+
+.principal footer .redes ul {
+    display: flex;
+    margin-left: 300%;
+
+}
+
+.principal footer .redes ul li {
+    margin-right: 10px;
+    list-style: none;
+    font-size: 15pt;
+
+}
+
+.principal footer .redes ul a {
+    text-decoration: none;
+
+
+}
+
+.principal footer img {
+    width: 60px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 1px 3px;
+}
+
+.principal footer img:hover {
+
+    border-radius: 30%;
+    box-shadow: 1px 3px green;
+}
+
+.principal .loginCenter {
+    display: flex;
+    width: 100%;
+    height: 489px;
+   background-color: rgb(3, 3, 3)
+}
+
+.principal .loginCenter .left {
+    width: 60%;
+    height: 470px;
+    margin: 10px;
+
+}
+
+.principal .loginCenter .right {
+    width: 40%;
+    height: 470px;
+    background-color: white;
+    margin: 10px;
+     border-radius: 20px;
+     border-top-left-radius: 20%;
+     box-shadow: -3px -3px rgb(7, 14, 224);
+
+}
+.principal .loginCenter .right form{
+      margin-left: 15%;
+      padding: auto;
+      margin-top: 30%;
+}
+.principal .loginCenter .right form input{
+     margin-bottom: 20px;
+     width: 350px;
+     height: 50px;
+        border-color: rgb(25, 25, 242);
+     border-radius: 10px;
+}
+.principal .loginCenter .right form button{
+
+     width: 120px;
+     height: 40px;
+     margin-left: 50%;
+      border-style: none;
+     border-radius: 10px;
+       background: linear-gradient(rgb(111, 222, 123), rgb(000, 111, 222));
+}
+.principal .loginCenter .right form button:hover{
+
+   
+       background: linear-gradient( rgb(000, 111, 222),rgb(111, 222, 123));
+}
+
+.principal .loginCenter .right form .senha{
+     display: flex;
+     margin: auto;
+}
+.principal .loginCenter .right form .senha input{
+     margin-right: 5px;
+     width: 170px;
+}

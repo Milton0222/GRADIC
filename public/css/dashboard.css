@@ -1,0 +1,254 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+   
+}
+
+body{
+    overflow: hidden;
+     width: 100%;
+    overflow: hidden;
+     height: 95vh;
+     background-color: white;
+}
+.principal{
+    width: 100%;
+    overflow: hidden;
+     height: 100vh;
+     background-color: white;
+}
+.principal .grupo{
+    display: flex;
+}
+.principal .menuSuperior{
+     display: flex;
+      width: 100%;
+      height: 10vh;
+      background-color: rgb(10, 10, 10);
+}
+.principal .menuSuperior .search{
+      margin-left: 45%;
+      margin-top: 10px;
+}
+.principal .menuSuperior .search input{
+         width: 400px;
+         height: 40px;
+         border-radius: 10px;
+         border-style: none;
+      
+}
+.principal .menuSuperior .search input::before{
+    border-color: rgb(25, 118, 239);
+}
+.principal .menuSuperior .search button{
+         width: 100px;
+         height: 40px;
+         border-radius: 10px;
+         border-style: none;
+         margin-left: -25px;
+            background: linear-gradient(rgb(111,222,123), rgb(000,111,222)) ;
+}
+.principal .menuSuperior .search button:hover{
+        background: linear-gradient( rgb(000,111,222),rgb(111,222,123)) ;
+}
+.principal .grupo .menuLeft{
+    background-color: rgb(6, 6, 6);
+    width: 20%;
+    height: 89vh;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-bottom-right-radius: 10px;
+}
+.principal .grupo .menuLeft ul{
+   
+      margin-top: 40px;
+      margin-bottom: 50px;
+   
+}
+.principal .grupo .menuLeft h1{
+      margin-top: 20px;
+      text-align: center;
+     
+}
+
+.principal .grupo .content{
+    width: 80%;
+    height: 89vh;
+    background-color: whitesmoke;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: auto;
+}
+
+.principal .grupo .content  .cartao{
+      width: 100%;
+      display: flex;
+      height: 30vh;
+      background-color: rgb(255, 255, 255);
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+}
+.principal .grupo .content  .cartao .cartao1{
+       width: 100%;
+       margin-right: 10px;
+       margin-left: 10px;
+       height: 25vh;
+       margin-top: 10px;
+       border-radius: 5px;
+       background-color: rgb(5, 5, 5);
+}
+.principal .grupo .content .graficos{
+      display: flex;
+      margin: auto;
+      margin-top: 10px;
+      margin-left: 10px;
+    
+}
+.principal .grupo .content .graficos .dados{
+       width: 100%;
+      height: 88vh;
+      background-color: rgb(255, 255, 255);
+       border-radius: 10px;
+}
+.principal .grupo .content .graficos h4{
+       text-align: center;
+       background-color: rgb(25, 118, 239);
+       color: white;
+       border-radius: 10px;
+    
+}
+.principal .grupo .content .grafico1{
+      width: 50%;
+      height: 88vh;
+      background-color: rgb(255, 255, 255);
+       border-radius: 10px;
+    
+}
+.principal .grupo .content .grafico2{
+     width: 50%;
+     height: 88vh;
+     background-color: rgb(255, 255, 255);
+     margin-left: 5px;
+     border-radius: 10px;
+      
+    
+}
+
+.principal .grupo .content .dados{
+         margin-top: 10px;
+         
+         overflow: auto;
+}
+.principal .grupo .content .dados .table thead{
+       background-color: rgb(255, 255, 255);
+     
+        box-shadow: 4px 3px;
+}
+.principal .grupo .content .dados .table .metodos{
+       display: flex;
+}
+.table .metodos button{
+      margin-right: 10px;
+}
+
+/* form user*/
+
+.cartao{
+        margin: auto;
+}
+
+.cartao .inputs{
+     display: flex;
+     margin-left:40px;
+}
+.cartao input{
+     width: 400px;
+     height: 40px;
+     margin-right: 10px;
+     border-radius: 20px;
+}
+.cartao select{
+     width: 700px;
+     height: 40px;
+     margin-right: 10px;
+     border-radius: 20px;
+}
+.cartao button{
+     margin-top: 23px;
+     height: 40px;
+     margin-right: 10px;
+     border-radius: 10px;
+     background-color: rgb(8, 9, 8);
+     
+}
+
+.menuLeft ul li{
+        padding: auto;
+        margin: auto;
+        font-size: 18pt;
+        margin-top: 20px;
+        text-align: center;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        box-shadow: 2px -3px;
+        list-style: none;
+        margin-right: 20px;
+}
+
+.menuLeft h1{
+        padding: auto;
+        margin: auto;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 20pt;
+        box-shadow: -2px -3px ;
+}
+
+/*logo*/
+
+ .menuSuperior .logo a{
+    margin: 10px;
+    padding: auto;
+    font-size: 20pt;
+    box-shadow: 0px 3px;
+    border-radius: 50%;
+}
+.logo img{
+    width: 5%;
+    width: 5%;
+    border-radius: 50%;
+    box-shadow: 1px 3px;
+}
+
+.cartao1 .up{
+    width: 100%;
+    height: 15vh;
+    box-shadow: 0px 3px blue;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: linear-gradient( rgb(000,111,222),rgb(111,222,123)) ;
+}
+.cartao1 a{
+    font-size: 24pt;
+    color: white;
+    margin-right: 20px;
+}
+.cartao1 strong{
+      font-size: 35pt;
+}
+.cartao1 .down h2{
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+
+}
+
+
+
