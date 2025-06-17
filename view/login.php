@@ -45,12 +45,12 @@
                
                </div>
                <div class="right">
-                    <form action="" method="post">
+                    <form action="../controller/auth.php" method="post">
                            <div>
-                                 <input type="email" name="" id="" required placeholder="Informe o username">
+                                 <input type="email" name="email" id="" required placeholder="Informe o username">
                            </div>
                            <div>
-                            <input type="password" name="" id="" required placeholder="Informe sua senha">
+                            <input type="password" name="senha" id="" required placeholder="Informe sua senha">
                            </div>
                            <div>
                              

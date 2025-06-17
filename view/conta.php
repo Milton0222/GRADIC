@@ -45,17 +45,18 @@
                
                </div>
                <div class="right">
-                    <form action="" method="post">
+                    <form action="../controller/userController.php" method="post">
+                         <input type="hidden" name="opcao" value="criar">
                         <div>
-                             <input type="text" name="" id="" placeholder="Informe seu nome">
+                             <input type="text" name="nome" id="" placeholder="Informe seu nome" minlength="7" maxlength="50">
                         </div>
                            <div>
-                                 <input type="email" name="" id="" required>
+                                 <input type="email" name="email" id="" required>
                            </div>
                            
                            <div class="senha">
-                            <input type="password" name="" id="" required>
-                            <input type="password" name="" id="" placeholder="Confirma sua senha" >
+                            <input type="password" name="senha" id="" required>
+                            <input type="password" name="confirmar" id="" placeholder="Confirma sua senha" >
                            </div>
                            <div>
                              

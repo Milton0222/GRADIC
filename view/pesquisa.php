@@ -11,6 +11,10 @@
 
 <body>
     <div class="principal">
+        <?php 
+        include_once('../controller/validar.php');
+
+        ?>
 
         <div class="menuSuperior">
                  <div class="logo">
@@ -49,7 +53,7 @@
 
 
                 </ul>
-                <a href="" class="sair">
+                <a href="../controller/sair.php" class="sair">
                     <h1>Sair</h1>
                 </a>
             </div>
