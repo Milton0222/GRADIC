@@ -48,8 +48,8 @@
                     <a href="">
                         <li>Relatórios</li>
                     </a>
-                    <a href="">
-                        <li>Utilizadores</li>
+                    <a href="utilizador.php">
+                        <li>Utilizador</li>
                     </a>
 
 
