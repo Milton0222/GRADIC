@@ -241,23 +241,17 @@
                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                 </div>
                 <div class='modal-body'>
-
                     <form action='../controller/perguntaController.php' method='post'>
                         <input type='hidden' value='criar' name='opcao'>
                            <input type='hidden' value='$id' name='idcode'>
 
                         <div class='row'>
-                           
-
                             <div class='col'>
                                 <div class='form-floating mb-3'>
                                     <input type='text' class='form-control' required id='floatingInput' maxlength='50' minlength='10' value='' placeholder='Informe a pergunta' name='nome'>
                                     <label for='floatingInput'>Pergunta de pesquisa</label>
                                 </div>
-                                  
-                                
                             </div>
-                                
                             
                         </div>
                         <div class='modal-footer' style='display:flex;'>

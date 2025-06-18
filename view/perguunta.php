@@ -13,6 +13,24 @@
     <div class="principal">
         <?php 
         include_once('../controller/validar.php');
+        include_once('../controller/conexao.php');
+          $user_id=$_SESSION['id'];
+
+        $sql="SELECT pesquisas.id AS 'pesquisa',pesquisas.tema,
+		perguntas.id,perguntas.nome
+	FROM pesquisas JOIN perguntas ON(pesquisas.id=perguntas.pesquisa_id)
+	
+	WHERE pesquisas.user_id=$user_id;";
+
+          $verificar=mysqli_query($conexao,$sql);
+
+          $sql="SELECT *from pesquisas where user_id=$user_id;";
+          $pesquisaveri=mysqli_query($conexao,$sql);
+
+         $qtdpergunta=mysqli_num_rows($verificar);
+         $qtdpesquisa=mysqli_num_rows($pesquisaveri);
+          //fechando conexao
+          mysqli_close($conexao);
 
         ?>
 
@@ -64,10 +82,10 @@
                     <div class="cartao1">
                           <div class="up">
                                  <a href="">Gerir</a>
-                                 <strong>+1</strong>
+                                 <strong>+<?php  print  $qtdpergunta;?></strong>
                           </div>
                           <div class="down">
-                                  <h2>Pesquisas</h2>  
+                                  <h2>Perguntas</h2>  
                           </div>
 
                     </div>
@@ -75,7 +93,7 @@
 
                         <div class="up">
                                  <a href="">Gerir</a>
-                                <strong>+1</strong>
+                                <strong>+<?php print $qtdpesquisa;?></strong>
                           </div>
                           <div class="down">
                                       <h2>Pesquisas</h2>  
@@ -88,21 +106,11 @@
                                  <strong>+1</strong>
                           </div>
                           <div class="down">
-                                    <h2>Pesquisas</h2>  
+                                    <h2>Dados</h2>  
                           </div>
 
                     </div>
-                    <div class="cartao1">
-
-                        <div class="up">
-                                 <a href="">Gerir</a>
-                               <strong>+1</strong>
-                          </div>
-                          <div class="down">
-                               <h2>Pesquisas</h2>  
-                          </div>
-
-                    </div>
+                    
 
                 </div>
                 <div class="graficos">
@@ -111,27 +119,102 @@
 
                         <table class="table">
                             <thead>
-                                <th>Pesquisa</th>
+                            
                                 <th>Tema</th>
-                                <th>Objectivo</th>
-                                <th>Tipo</th>
-                                <th>Problemática</th>
+                                <th>Pergunta</th>
+                                
                                 <th>Metódo</th>
                             </thead>
                             <tbody>
+                                <?php 
+
+                                while($dados=mysqli_fetch_assoc($verificar)){ 
+                                       $id=$dados['id'];
+                                       $pesquisaid=$dados['pesquisa'];
+                                       $tema=$dados['tema'];
+                                       $nome=$dados['nome'];
+
+                                       print " 
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>$tema</td>
+                                    <td>$nome</td>
+                                
                                     <td>
-                                          <div class="gbutto">
-                                                    <button class="btn btn-danger">Apagar</button>
-                                                    <button class="btn btn-success">Apagar</button>
+                                          <div class='gbutto'>
+                                                    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#apagar$id'>Apagar</button>
+     <div class='modal fade' id='apagar$id' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true' >
+                                        <div class='modal-dialog'>
+                                            <div class='modal-content'>
+                                            <div class='modal-header'>
+                                                <h5 class='modal-title' id='exampleModalLabel'>Desejas  apagar apergunta $nome ?</h5>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                            </div>
+                                            <div class='modal-body'>
+
+                                                    
+                                                <form action='../controller/perguntaController.php' method='post'>
+                                                <input type='hidden' value='$id' name='idcode'>
+                                                    <input type='hidden' value='apagar' name='opcao'>
+                                            <div class='modal-footer' style='display:flex;'>
+                                                <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Não</button>
+                                                <button type='submit' class='btn btn-danger'>Sim</button>
+                                            </div>               
+                                                                                            
+                                            </form>
+
+                                            </div>
+                                            
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                                    <button class='btn btn-success' data-bs-toggle='modal' data-bs-target='#actualizar$id'>Actualizar</button>
+    <div class='modal fade' id='actualizar$id' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Actualizar  pergunta nº $id</h5>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class='modal-body'>
+
+                    <form action='../controller/perguntaController.php' method='post'>
+                        <input type='hidden' value='actualizar' name='opcao'>
+                           <input type='hidden' value='$id' name='idcode'>
+
+                        <div class='row'>
+                           
+
+                            <div class='col'>
+                                <div class='form-floating mb-3'>
+                                    <input type='text' class='form-control' required id='floatingInput' maxlength='50' minlength='10' value='$nome' placeholder='Informe a pergunta' name='nome'>
+                                    <label for='floatingInput'>Pergunta de pesquisa</label>
+                                </div>
+                                  
+                                
+                            </div>
+                                
+                            
+                        </div>
+                        <div class='modal-footer' style='display:flex;'>
+                            <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Canselar</button>
+                            <button type='submit' class='btn btn-danger'>Salvar</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
                                           </div>
                                     </td>
-                                </tr>
+                                </tr>";
+                                }
+                                ?>
                             </tbody>
                         </table>
 
