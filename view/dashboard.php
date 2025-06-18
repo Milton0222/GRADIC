@@ -14,6 +14,39 @@
     <div class="principal">
         <?php 
         include_once('../controller/validar.php');
+         include_once('../controller/conexao.php');
+
+             $sql="SELECT *FROM pesquisas;";
+
+             $verificar=mysqli_query($conexao,$sql);
+
+
+             //buscando perguntas 
+
+               $sql="SELECT pesquisas.id AS 'pesquisa',pesquisas.tema,
+		perguntas.id,perguntas.nome
+	FROM pesquisas JOIN perguntas ON(pesquisas.id=perguntas.pesquisa_id);";
+
+          $perguntas=mysqli_query($conexao,$sql);
+
+          $qtdpergunta=mysqli_num_rows($perguntas);
+          $qtdpesquisa=mysqli_num_rows($verificar);
+
+          //dados
+
+          $sql="SELECT *FROM dados;";
+
+              $dadosr=mysqli_query($conexao,$sql);
+                 $qtddados=mysqli_num_rows($dadosr);
+
+                 //utilizador 
+
+                 $sql="SELECT *FROM utilizadores;";
+
+              $dadosu=mysqli_query($conexao,$sql);
+                 $qtduser=mysqli_num_rows($dadosu);
+             //fechar conexão
+             mysqli_close($conexao);
 
         ?>
 
@@ -23,7 +56,7 @@
             </div>
             <div class="search">
                 <form action="" method="get">
-                    <input type="search" name="" id="" placeholder="Informe um parametro" required>
+                    <input type="date" name="" id="" placeholder="Informe um parametro" required>
                     <button type="submit">Ir</button>
                 </form>
             </div>
@@ -65,7 +98,7 @@
                     <div class="cartao1">
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+1</strong>
+                            <strong>+<?php print $qtdpesquisa;?></strong>
                         </div>
                         <div class="down">
                             <h2>Pesquisas</h2>
@@ -76,20 +109,20 @@
 
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+1</strong>
+                            <strong>+<?php print $qtdpergunta;?></strong>
                         </div>
                         <div class="down">
-                            <h2>Pesquisas</h2>
+                            <h2>Perguntas</h2>
                         </div>
 
                     </div>
                     <div class="cartao1">
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+1</strong>
+                            <strong>+<?php print $qtddados;?></strong>
                         </div>
                         <div class="down">
-                            <h2>Pesquisas</h2>
+                            <h2>Dados</h2>
                         </div>
 
                     </div>
@@ -97,10 +130,10 @@
 
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+1</strong>
+                            <strong>+<?php print $qtduser;?></strong>
                         </div>
                         <div class="down">
-                            <h2>Pesquisas</h2>
+                            <h2>Utilizador</h2>
                         </div>
 
                     </div>
@@ -108,26 +141,38 @@
                 </div>
                 <div class="graficos">
                     <div class="grafico1">
-                        <h4>Dados Recentes</h4>
+                        <h4>Pesquisas Recentes</h4>
 
                         <table class="table">
                             <thead>
                                 <th>Pesquisa</th>
                                 <th>Tema</th>
-                                <th>Objectivo</th>
+                       
                                 <th>Tipo</th>
-                                <th>Problemática</th>
+                              
                                 <th>Metódo</th>
                             </thead>
                             <tbody>
+                                <?php 
+
+                                while($dados=mysqli_fetch_assoc($verificar)){ 
+                                            $id=$dados['id'];
+                                      $tema=$dados['tema'];
+                                      $tipo=$dados['tipo'];
+                                      $objectivo=$dados['objectivo'];
+                                      $problematica=$dados['ploblematica'];
+
+                                      print " 
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>$id</td>
+                                    <td>$tema</td>
+                              
+                                    <td>$tipo</td>
+                           
                                     <td>...</td>
-                                </tr>
+                                </tr>";
+}
+                                ?>
                             </tbody>
                         </table>
 
@@ -141,22 +186,30 @@
                         <hr>
                          <table class="table">
                             <thead>
-                                <th>Pesquisa</th>
+                          
                                 <th>Tema</th>
-                                <th>Objectivo</th>
-                                <th>Tipo</th>
-                                <th>Problemática</th>
+                                <th>Pergunta</th>
+                              
                                 <th>Metódo</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                <?php 
+
+                                while($dados=mysqli_fetch_assoc($perguntas)){ 
+                                       $id=$dados['id'];
+                                       $pesquisaid=$dados['pesquisa'];
+                                       $tema=$dados['tema'];
+                                       $nome=$dados['nome'];
+                                print " 
+                                       <tr>
+                                 
+                                    <td>$tema</td>
+                                    <td>$nome</td>
+                                 
                                     <td>...</td>
-                                </tr>
+                                </tr>";
+                                }
+                                ?>
                             </tbody>
                         </table>
 

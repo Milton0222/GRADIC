@@ -140,7 +140,7 @@
                                     <td>$nome</td>
                                 
                                     <td>
-                                          <div class='gbutto'>
+                                          <div class='btn-group'>
                                                     <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#apagar$id'>Apagar</button>
      <div class='modal fade' id='apagar$id' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true' >
                                         <div class='modal-dialog'>
@@ -184,7 +184,6 @@
 
                         <div class='row'>
                            
-
                             <div class='col'>
                                 <div class='form-floating mb-3'>
                                     <input type='text' class='form-control' required id='floatingInput' maxlength='50' minlength='10' value='$nome' placeholder='Informe a pergunta' name='nome'>
@@ -209,6 +208,51 @@
         </div>
     </div>
 
+                    <button class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#dado$id'>Responder</button>
+                    <div class='modal fade' id='dado$id' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+        <div class='modal-dialog modal-lg'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Registar dados da  pergunta $nome</h5>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class='modal-body'>
+
+                    <form action='../controller/dadosController.php' method='post'>
+                        <input type='hidden' value='criar' name='opcao'>
+                           <input type='hidden' value='$id' name='idcode'>
+                        <div class='row'>
+                            <div class='form-floating mb-3'>
+                                    <textarea class='form-control' id='floatingPassword' name='descricao' id='' cols='30' rows='20'></textarea>
+                                    <label for='floatingPassword'>Descrição</label>
+                                </div>
+
+                            <div class='col'>
+                                <div class='form-floating mb-3'>
+                                    <input type='number' class='form-control' required id='floatingInput' value='' ' name='numero'>
+                                    <label for='floatingInput'>Número</label>
+                                </div>
+                                 
+                                
+                            </div>
+                                <div class='form-floating'>
+                                    <textarea class='form-control' id='floatingPassword'  required name='opniao' id='' cols='30' rows='20' ></textarea>
+                                    <label for='floatingPassword'>Opnião</label>
+                                </div>
+                            
+                        </div>
+                        <div class='modal-footer' style='display:flex;'>
+                            <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Canselar</button>
+                            <button type='submit' class='btn btn-danger'>Salvar</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
                                           </div>
                                     </td>

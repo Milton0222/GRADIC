@@ -153,7 +153,7 @@
                                     <td>$tipo</td>
                                     
                                     <td>
-                                        <div class='gbutto'>
+                                        <div class='btn-group'>
                                             <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#apagar$id'>Apagar</button>
                                 <div class='modal fade' id='apagar$id' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true' >
                                         <div class='modal-dialog'>
@@ -295,7 +295,7 @@
 
     <!--modal novo-->
     <div class='modal fade' id='novo' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-        <div class='modal-dialog'>
+        <div class='modal-dialog modal-lg'>
             <div class='modal-content'>
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'> Registro de Pesquisa</h5>

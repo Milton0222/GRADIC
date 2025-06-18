@@ -158,13 +158,13 @@
                                     <td>$estatistica</td>
                                     
                                     <td>
-                                        <div class='gbutto'>
+                                        <div class='btn-group'>
                                             <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#apagar$id'>Apagar</button>
                                 <div class='modal fade' id='apagar$id' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true' >
                                         <div class='modal-dialog'>
                                             <div class='modal-content'>
                                             <div class='modal-header'>
-                                                <h5 class='modal-title' id='exampleModalLabel'>Desejas os dados nº $id ?</h5>
+                                                <h5 class='modal-title' id='exampleModalLabel'>Desejas apagar os dados nº $id ?</h5>
                                                 <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                             </div>
                                             <div class='modal-body'>
@@ -197,23 +197,23 @@
                 </div>
                 <div class='modal-body'>
 
-                    <form action='../controller/pesquisaController.php' method='post'>
+                    <form action='../controller/dadosController.php' method='post'>
                         <input type='hidden' value='actualizar' name='opcao'>
                            <input type='hidden' value='$id' name='idcode'>
 
                         <div class='row'>
                             <div class='form-floating mb-3'>
-                                    <textarea class='form-control' id='floatingPassword' name='descricao' id='' cols='30' rows='20'></textarea>
+                                    <textarea class='form-control' id='floatingPassword' name='descricao' id='' cols='30' rows='20'>$descricao</textarea>
                                     <label for='floatingPassword'>Descrição</label>
                                 </div>
 
                             <div class='col'>
                                 <div class='form-floating mb-3'>
-                                    <input type='number' class='form-control' required id='floatingInput' value='' placeholder='Informe o tema de pesquisa' name='numero'>
+                                    <input type='number' class='form-control' required id='floatingInput' value='$numero' name='numero'>
                                     <label for='floatingInput'>Número</label>
                                 </div>
                                   <div class='form-floating mb-3'>
-                                    <input type='number' class='form-control' required id='floatingInput' name='estatistico' value='' placeholder='Informe o tipo de pesquisa'>
+                                    <input type='number' class='form-control' required id='floatingInput' name='estatistico' value='' >
                                     <label for='floatingInput'>Dados Estátistico</label>
                                 </div>
                                 
@@ -237,41 +237,7 @@
         </div>
     </div>
 
-     <button class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#pergunta$id'>Pergunta</button>
-     <div class='modal fade' id='pergunta$id' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLabel'>Registrar pergunta da pesquisa nº $id</h5>
-                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                </div>
-                <div class='modal-body'>
-                    <form action='../controller/perguntaController.php' method='post'>
-                        <input type='hidden' value='criar' name='opcao'>
-                           <input type='hidden' value='$id' name='idcode'>
-
-                        <div class='row'>
-                            <div class='col'>
-                                <div class='form-floating mb-3'>
-                                    <input type='text' class='form-control' required id='floatingInput' maxlength='50' minlength='10' value='' placeholder='Informe a pergunta' name='nome'>
-                                    <label for='floatingInput'>Pergunta de pesquisa</label>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class='modal-footer' style='display:flex;'>
-                            <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Canselar</button>
-                            <button type='submit' class='btn btn-danger'>Salvar</button>
-                        </div>
-
-                    </form>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+    
 
                                         </div>
                                     </td>

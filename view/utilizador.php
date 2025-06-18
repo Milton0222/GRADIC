@@ -141,7 +141,7 @@
                                     <td>$tipo</td>
                                     
                                     <td>
-                                          <div class='gbutto'>
+                                          <div class='btn-group'>
                                                     <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#apagar$id'>Apagar</button>
                                         <div class='modal fade' id='apagar$id' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true' >
                                         <div class='modal-dialog'>
