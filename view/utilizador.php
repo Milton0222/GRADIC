@@ -41,11 +41,11 @@
                 </a>
                 <ul>
 
-                    <a href="">
+                    <a href="pesquisa.php">
                         <li>Pesquisa</li>
                     </a>
-                    <a href="">
-                        <li>Registro</li>
+                    <a href="perguunta.php">
+                        <li>Pergunta</li>
                     </a>
                     <a href="">
                         <li>Análise</li>
@@ -73,7 +73,7 @@
                                  <strong>+1</strong>
                           </div>
                           <div class="down">
-                                  <h2>Pesquisas</h2>  
+                                  <h2>Utilizador</h2>  
                           </div>
 
                     </div>
@@ -94,7 +94,7 @@
                                  <strong>+1</strong>
                           </div>
                           <div class="down">
-                                    <h2>Analise</h2>  
+                                    <h2>Pergunta</h2>  
                           </div>
 
                     </div>

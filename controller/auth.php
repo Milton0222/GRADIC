@@ -20,7 +20,7 @@
              session_start();
              $_SESSION['nome']=$nome;
              $_SESSION['tipo']=$tipo;
-             $_SESSION['id']=$tipo;
+             $_SESSION['id']=$id;
 
                   mysqli_close($conexao);
              header('Location: ../view/dashboard.php?info=Sessão iniciada.');

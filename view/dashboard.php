@@ -39,8 +39,8 @@
                     <a href="pesquisa.php">
                         <li>Pesquisa</li>
                     </a>
-                    <a href="">
-                        <li>Registro</li>
+                    <a href="perguunta.php">
+                        <li>Pergunta</li>
                     </a>
                     <a href="">
                         <li>Análise</li>
