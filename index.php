@@ -13,17 +13,17 @@
     <div class="principal">
         <div class="menu">
             <ul>
-                <a href="">
+                <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="">
-                    <li>Registro</li>
+                <a href="./view/pesquisa.php">
+                    <li>Pesquisa</li>
                 </a>
-                <a href="">
-                    <li>Análise</li>
+                <a href="./view/perguunta.php">
+                    <li>Pergunta</li>
                 </a>
-                <a href="">
-                    <li>Relatório</li>
+                <a href="./view/dado.php">
+                    <li>Dados</li>
                 </a>
                 <a href="">
                     <li>Contactos</li>
@@ -45,7 +45,7 @@
                    <h4>REGISTRO E ANÁLISE DE DADOS EM INVESTIGAÇÃO CIENTIFICA</h4>
                      <div class="grupo">
                           <a href="./view/dashboard.php"><button><strong>Entrar</strong></button></a>
-                          <a href=""><button><strong>Criar Conta</strong> </button></a>
+                          <a href="./view/conta.php"><button><strong>Criar Conta</strong> </button></a>
                      </div>
             </div>
         </div>
