@@ -42,8 +42,8 @@
                     <a href="perguunta.php">
                         <li>Pergunta</li>
                     </a>
-                    <a href="">
-                        <li>Análise</li>
+                    <a href="dado.php">
+                        <li>Dado</li>
                     </a>
                     <a href="">
                         <li>Relatórios</li>
