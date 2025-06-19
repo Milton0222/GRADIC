@@ -16,7 +16,9 @@ if ($opcao == 'criar') {
     $userId = $_SESSION['id'];
     $obectivo = $_POST['objectivo'];
 
-    $sql = "INSERT INTO pesquisas (tema,tipo,ploblematica,objectivo,user_id) VALUE('$tema','$tipo','$problematica','$obectivo',$userId);";
+    $dataregistro=date('Y-m-d');
+
+    $sql = "INSERT INTO pesquisas (tema,tipo,ploblematica,objectivo,user_id,dataregistro) VALUE('$tema','$tipo','$problematica','$obectivo',$userId,'$dataregistro');";
     //executando comando sql para enserir na tabela pesquisas  
     $verificar = mysqli_query($conexao, $sql);
 
