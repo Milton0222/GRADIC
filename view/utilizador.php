@@ -11,27 +11,27 @@
 
 <body>
     <div class="principal">
-        <?php 
+        <?php
         include_once('../controller/conexao.php');
         include_once('../controller/validar.php');
 
-            $sql="SELECT *FROM utilizadores";
-             
-            //executar comando sql
-            $verificar=mysqli_query($conexao,$sql);
+        $sql = "SELECT *FROM utilizadores";
+
+        //executar comando sql
+        $verificar = mysqli_query($conexao, $sql);
 
         ?>
 
         <div class="menuSuperior">
-                 <div class="logo">
-                     <a href="dashboard.php">Dashboard</a>
-                 </div>
-                 <div class="search">
-                      <form action="" method="get">
-                          <input type="search" name="" id="" placeholder="Informe um parametro" required>
-                          <button type="submit">Ir</button>
-                      </form>
-                 </div>
+            <div class="logo">
+                <a href="dashboard.php">Dashboard</a>
+            </div>
+            <div class="search">
+                <form action="search.php" method="get">
+                    <input type="date" name="search" id="" placeholder="Informe um parametro" required>
+                    <button type="submit">Ir</button>
+                </form>
+            </div>
 
         </div>
         <div class="grupo">
@@ -68,45 +68,46 @@
                 <!--conteudo-->
                 <div class="cartao">
                     <div class="cartao1">
-                          <div class="up">
-                                 <a href="">Gerir</a>
-                                 <strong>+1</strong>
-                          </div>
-                          <div class="down">
-                                  <h2>Utilizador</h2>  
-                          </div>
+                        <div class="up">
+                            <a href="">Gerir</a>
+                            <strong>+1</strong>
+                        </div>
+                        <div class="down">
+                            <h2>Utilizador</h2>
+                        </div>
 
                     </div>
                     <div class="cartao1">
 
                         <div class="up">
-                                 <a href="">Gerir</a>
-                                <strong>+1</strong>
-                          </div>
-                          <div class="down">
-                                      <h2>Dados</h2>  
-                          </div>
+                            <a href="">Gerir</a>
+                            <strong>+1</strong>
+                        </div>
+                        <div class="down">
+                            <h2>Dados</h2>
+                        </div>
 
                     </div>
                     <div class="cartao1">
                         <div class="up">
-                                 <a href="">Gerir</a>
-                                 <strong>+1</strong>
-                          </div>
-                          <div class="down">
-                                    <h2>Pergunta</h2>  
-                          </div>
+                            <a href="">Gerir</a>
+                            <strong>+1</strong>
+                        </div>
+                        <div class="down">
+                            <h2>Pergunta</h2>
+                        </div>
 
                     </div>
                     <div class="cartao1">
 
                         <div class="up">
-                                 <a href=""><?php $nome= $_SESSION['tipo']; print $nome;?></a>
-                             
-                          </div>
-                          <div class="down">
-                               <h2>User</h2>  
-                          </div>
+                            <a href=""><?php $nome = $_SESSION['tipo'];
+                                        print $nome; ?></a>
+
+                        </div>
+                        <div class="down">
+                            <h2>User</h2>
+                        </div>
 
                     </div>
 
@@ -124,14 +125,14 @@
                                 <th>Metódo</th>
                             </thead>
                             <tbody>
-                            <?php
-                                while($dados=mysqli_fetch_assoc($verificar)){
+                                <?php
+                                while ($dados = mysqli_fetch_assoc($verificar)) {
 
-                                     $id=$dados['id'];
-                                     $nome=$dados['nome'];
-                                     $email=$dados['userName'];
-                                     $tipo=$dados['tipo'];
-                                     $senha=$dados['senha'];
+                                    $id = $dados['id'];
+                                    $nome = $dados['nome'];
+                                    $email = $dados['userName'];
+                                    $tipo = $dados['tipo'];
+                                    $senha = $dados['senha'];
 
                                     print  "
                                 <tr>
@@ -236,7 +237,7 @@
                         </table>
 
                     </div>
-                  
+
                 </div>
 
 

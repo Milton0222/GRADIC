@@ -11,39 +11,47 @@
 
 <body>
     <div class="principal">
-        <?php 
+        <?php
         include_once('../controller/validar.php');
         include_once('../controller/conexao.php');
-          $user_id=$_SESSION['id'];
+        $user_id = $_SESSION['id'];
 
-        $sql="SELECT pesquisas.id AS 'pesquisa',pesquisas.tema,
+        $sql = "SELECT pesquisas.id AS 'pesquisa',pesquisas.tema,
 		perguntas.id,perguntas.nome
 	FROM pesquisas JOIN perguntas ON(pesquisas.id=perguntas.pesquisa_id)
 	
 	WHERE pesquisas.user_id=$user_id;";
 
-          $verificar=mysqli_query($conexao,$sql);
+        $verificar = mysqli_query($conexao, $sql);
 
-          $sql="SELECT *from pesquisas where user_id=$user_id;";
-          $pesquisaveri=mysqli_query($conexao,$sql);
+        $sql = "SELECT *from pesquisas where user_id=$user_id;";
+        $pesquisaveri = mysqli_query($conexao, $sql);
 
-         $qtdpergunta=mysqli_num_rows($verificar);
-         $qtdpesquisa=mysqli_num_rows($pesquisaveri);
-          //fechando conexao
-          mysqli_close($conexao);
+        $qtdpergunta = mysqli_num_rows($verificar);
+        $qtdpesquisa = mysqli_num_rows($pesquisaveri);
+
+   //dados
+
+                  $sql="SELECT *FROM dados;";
+                   $verificardados=mysqli_query($conexao,$sql);
+
+                  $qtddados=mysqli_num_rows($verificardados);
+
+        //fechando conexao
+        mysqli_close($conexao);
 
         ?>
 
         <div class="menuSuperior">
-                 <div class="logo">
-                     <a href="dashboard.php">Dashboard</a>
-                 </div>
-                 <div class="search">
-                      <form action="" method="get">
-                          <input type="search" name="" id="" placeholder="Informe um parametro" required>
-                          <button type="submit">Ir</button>
-                      </form>
-                 </div>
+            <div class="logo">
+                <a href="dashboard.php">Dashboard</a>
+            </div>
+            <div class="search">
+                <form action="search.php" method="get">
+                    <input type="date" name="search" id="" placeholder="Informe um parametro" required>
+                    <button type="submit">Ir</button>
+                </form>
+            </div>
 
         </div>
         <div class="grupo">
@@ -80,37 +88,37 @@
                 <!--conteudo-->
                 <div class="cartao">
                     <div class="cartao1">
-                          <div class="up">
-                                 <a href="">Gerir</a>
-                                 <strong>+<?php  print  $qtdpergunta;?></strong>
-                          </div>
-                          <div class="down">
-                                  <h2>Perguntas</h2>  
-                          </div>
+                        <div class="up">
+                            <a href="">Gerir</a>
+                            <strong>+<?php print  $qtdpergunta; ?></strong>
+                        </div>
+                        <div class="down">
+                            <h2>Perguntas</h2>
+                        </div>
 
                     </div>
                     <div class="cartao1">
 
                         <div class="up">
-                                 <a href="">Gerir</a>
-                                <strong>+<?php print $qtdpesquisa;?></strong>
-                          </div>
-                          <div class="down">
-                                      <h2>Pesquisas</h2>  
-                          </div>
+                            <a href="">Gerir</a>
+                            <strong>+<?php print $qtdpesquisa; ?></strong>
+                        </div>
+                        <div class="down">
+                            <h2>Pesquisas</h2>
+                        </div>
 
                     </div>
                     <div class="cartao1">
                         <div class="up">
-                                 <a href="">Gerir</a>
-                                 <strong>+1</strong>
-                          </div>
-                          <div class="down">
-                                    <h2>Dados</h2>  
-                          </div>
+                            <a href="">Gerir</a>
+                            <strong>+<?php print $qtddados; ?></strong>
+                        </div>
+                        <div class="down">
+                            <h2>Dados</h2>
+                        </div>
 
                     </div>
-                    
+
 
                 </div>
                 <div class="graficos">
@@ -119,22 +127,22 @@
 
                         <table class="table">
                             <thead>
-                            
+
                                 <th>Tema</th>
                                 <th>Pergunta</th>
-                                
+
                                 <th>Metódo</th>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
 
-                                while($dados=mysqli_fetch_assoc($verificar)){ 
-                                       $id=$dados['id'];
-                                       $pesquisaid=$dados['pesquisa'];
-                                       $tema=$dados['tema'];
-                                       $nome=$dados['nome'];
+                                while ($dados = mysqli_fetch_assoc($verificar)) {
+                                    $id = $dados['id'];
+                                    $pesquisaid = $dados['pesquisa'];
+                                    $tema = $dados['tema'];
+                                    $nome = $dados['nome'];
 
-                                       print " 
+                                    print " 
                                 <tr>
                                     <td>$tema</td>
                                     <td>$nome</td>
@@ -263,7 +271,7 @@
                         </table>
 
                     </div>
-                  
+
                 </div>
 
 

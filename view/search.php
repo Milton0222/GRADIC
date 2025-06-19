@@ -17,11 +17,8 @@
          
           $userid=$_SESSION['id'];
 
-       
-                  
 
-
-                   //dados
+                     //dados
 
                   $sql="SELECT *FROM dados;";
 
@@ -43,17 +40,24 @@
 
                   $qtduser=mysqli_num_rows($verificar);
 
-                  //pesquisas
+                  //pesquisa
 
-                  $sql="SELECT *FROM pesquisas WHERE user_id=$userid;";
+                   $sql="SELECT *FROM pesquisas WHERE user_id=$userid;";
 
                   $verificar=mysqli_query($conexao,$sql);
 
-                  
-
                   $qtdpesquisa=mysqli_num_rows($verificar);
-                  //fechando conexao
 
+                   //pegar dados dor form
+                    $search=$_GET['search'];
+
+                        $sql="SELECT *FROM pesquisas 
+                    WHERE dataregistro='$search' and user_id=$userid;";
+                           
+                    $verificar=mysqli_query($conexao,$sql);
+
+                
+     //fechando conexao
                   mysqli_close($conexao);
 
         ?>
@@ -63,7 +67,7 @@
                 <a href="dashboard.php">Dashboard</a>
             </div>
             <div class="search">
-                 <form action="search.php" method="get">
+                <form action="search.php" method="get">
                     <input type="date" name="search" id="" placeholder="Informe um parametro" required>
                     <button type="submit">Ir</button>
                 </form>
@@ -117,7 +121,7 @@
 
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+<?php print $qtduser;?></strong>
+                            <strong><?php print $qtduser;?></strong>
                         </div>
                         <div class="down">
                             <h2>Utilizador</h2>

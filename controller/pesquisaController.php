@@ -30,7 +30,6 @@ if ($opcao == 'criar') {
     $idpesquisa = $_POST['idcode'];
 
 
-
     $sql = "DELETE FROM pesquisas WHERE id=$idpesquisa;";
     $verificar = mysqli_query($conexao, $sql);
 
@@ -54,4 +53,9 @@ if ($opcao == 'criar') {
     mysqli_close($conexao);
     header('Location: ../view/pesquisa.php?info=Dados da pesquisa actualizado.');
     exit;
+}elseif($opcao=='search'){
+
+   
+//pendente
+
 }

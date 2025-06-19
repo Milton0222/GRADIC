@@ -108,6 +108,7 @@ body{
       margin-top: 10px;
       margin-left: 10px;
     
+    
 }
 .principal .grupo .content .graficos .dados{
        width: 100%;
@@ -124,17 +125,19 @@ body{
 }
 .principal .grupo .content .grafico1{
       width: 50%;
-      height: 88vh;
+      height: 100%;
       background-color: rgb(255, 255, 255);
-       border-radius: 10px;
+      border-radius: 10px;
+      overflow: auto;
     
 }
 .principal .grupo .content .grafico2{
      width: 50%;
-     height: 88vh;
+     height: 100%;
      background-color: rgb(255, 255, 255);
      margin-left: 5px;
      border-radius: 10px;
+     overflow: auto;
       
     
 }

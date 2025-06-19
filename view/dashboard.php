@@ -7,46 +7,73 @@
     <title>GRADIC-Dashboard</title>
     <link rel="stylesheet" href="../public/css/bootstrap.css">
     <link rel="stylesheet" href="../public/css/dashboard.css">
-     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
     <div class="principal">
-        <?php 
+        <?php
         include_once('../controller/validar.php');
-         include_once('../controller/conexao.php');
+        include_once('../controller/conexao.php');
 
-             $sql="SELECT *FROM pesquisas;";
+        $sql = "SELECT *FROM pesquisas;";
 
-             $verificar=mysqli_query($conexao,$sql);
+        $verificar = mysqli_query($conexao, $sql);
 
 
-             //buscando perguntas 
+        //buscando perguntas 
 
-               $sql="SELECT pesquisas.id AS 'pesquisa',pesquisas.tema,
+        $sql = "SELECT pesquisas.id AS 'pesquisa',pesquisas.tema,
 		perguntas.id,perguntas.nome
 	FROM pesquisas JOIN perguntas ON(pesquisas.id=perguntas.pesquisa_id);";
 
-          $perguntas=mysqli_query($conexao,$sql);
+        $perguntas = mysqli_query($conexao, $sql);
 
-          $qtdpergunta=mysqli_num_rows($perguntas);
-          $qtdpesquisa=mysqli_num_rows($verificar);
+        $qtdpergunta = mysqli_num_rows($perguntas);
+        $qtdpesquisa = mysqli_num_rows($verificar);
 
-          //dados
+        //dados
 
-          $sql="SELECT *FROM dados;";
+        $sql = "SELECT *FROM dados;";
 
-              $dadosr=mysqli_query($conexao,$sql);
-                 $qtddados=mysqli_num_rows($dadosr);
+        $dadosr = mysqli_query($conexao, $sql);
+        $qtddados = mysqli_num_rows($dadosr);
 
-                 //utilizador 
+        //utilizador 
 
-                 $sql="SELECT *FROM utilizadores;";
+        $sql = "SELECT *FROM utilizadores;";
 
-              $dadosu=mysqli_query($conexao,$sql);
-                 $qtduser=mysqli_num_rows($dadosu);
-             //fechar conexão
-             mysqli_close($conexao);
+        $dadosu = mysqli_query($conexao, $sql);
+        $qtduser = mysqli_num_rows($dadosu);
+
+
+        //buscar dados para o grafico 
+
+        $sql = " SELECT pesquisas.tema ,count(perguntas.id) AS 'qtd'
+            FROM pesquisas JOIN perguntas ON(pesquisas.id=perguntas.pesquisa_id)
+            GROUP BY pesquisas.tema";
+
+        $graficodados = mysqli_query($conexao, $sql);
+        $titulo = [];
+        $qtd = [];
+
+        while ($dados = mysqli_fetch_assoc($graficodados)) {
+            $titulo[] = $dados['tema'];
+            $qtd[] = $dados['qtd'];
+        }
+
+        $titulog = implode("','", $titulo);
+        $valor = implode("','", $qtd);
+
+
+        //perguntas e dados 
+            $sql="SELECT perguntas.nome, COUNT(dados.id) AS 'respostas'
+   FROM perguntas JOIN dados ON(perguntas.id=dados.perguntas_id)
+   GROUP BY perguntas.nome;";
+
+           $respostas=mysqli_query($conexao,$sql);
+        //fechar conexão
+        mysqli_close($conexao);
 
         ?>
 
@@ -55,8 +82,8 @@
                 <a href="dashboard.php">Dashboard</a>
             </div>
             <div class="search">
-                <form action="" method="get">
-                    <input type="date" name="" id="" placeholder="Informe um parametro" required>
+                <form action="search.php" method="get">
+                    <input type="date" name="search" id="" placeholder="Informe um parametro" required>
                     <button type="submit">Ir</button>
                 </form>
             </div>
@@ -98,7 +125,7 @@
                     <div class="cartao1">
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+<?php print $qtdpesquisa;?></strong>
+                            <strong>+<?php print $qtdpesquisa; ?></strong>
                         </div>
                         <div class="down">
                             <h2>Pesquisas</h2>
@@ -109,7 +136,7 @@
 
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+<?php print $qtdpergunta;?></strong>
+                            <strong>+<?php print $qtdpergunta; ?></strong>
                         </div>
                         <div class="down">
                             <h2>Perguntas</h2>
@@ -119,7 +146,7 @@
                     <div class="cartao1">
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+<?php print $qtddados;?></strong>
+                            <strong>+<?php print $qtddados; ?></strong>
                         </div>
                         <div class="down">
                             <h2>Dados</h2>
@@ -130,7 +157,7 @@
 
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+<?php print $qtduser;?></strong>
+                            <strong>+<?php print $qtduser; ?></strong>
                         </div>
                         <div class="down">
                             <h2>Utilizador</h2>
@@ -147,31 +174,53 @@
                             <thead>
                                 <th>Pesquisa</th>
                                 <th>Tema</th>
-                       
                                 <th>Tipo</th>
-                              
-                                <th>Metódo</th>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
 
-                                while($dados=mysqli_fetch_assoc($verificar)){ 
-                                            $id=$dados['id'];
-                                      $tema=$dados['tema'];
-                                      $tipo=$dados['tipo'];
-                                      $objectivo=$dados['objectivo'];
-                                      $problematica=$dados['ploblematica'];
+                                while ($dados = mysqli_fetch_assoc($verificar)) {
+                                    $id = $dados['id'];
+                                    $tema = $dados['tema'];
+                                    $tipo = $dados['tipo'];
+                                    $objectivo = $dados['objectivo'];
+                                    $problematica = $dados['ploblematica'];
 
-                                      print " 
+                                    print " 
                                 <tr>
                                     <td>$id</td>
                                     <td>$tema</td>
                               
                                     <td>$tipo</td>
                            
-                                    <td>...</td>
                                 </tr>";
-}
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+
+                        <hr>
+                        <table class="table">
+                            <thead>
+                                <th>Pergunta</th>
+                                <th>Progresso</th>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                   while($lista=mysqli_fetch_assoc($respostas)){ 
+                                          $nome=$lista['nome'];
+                                          $quantidade=$lista['respostas'];
+
+                                print " 
+                                <tr>
+                                    <td>$nome</td>
+                                    <td>
+                                        <div class='progress' role='progressbar' aria-label='Success example' aria-valuenow='<?php print $qtddados;?>' aria-valuemin='0' aria-valuemax='<?php print $qtdpergunta;?>'>
+                                            <div class='progress-bar w-$quantidade%'>$quantidade</div>
+                                        </div>
+                                    </td>
+                                </tr>";
+                                }
                                 ?>
                             </tbody>
                         </table>
@@ -184,29 +233,29 @@
                             <canvas id="myChart" class="chart1"></canvas>
                         </div>
                         <hr>
-                         <table class="table">
+                        <table class="table">
                             <thead>
-                          
+
                                 <th>Tema</th>
                                 <th>Pergunta</th>
-                              
-                                <th>Metódo</th>
+
+
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
 
-                                while($dados=mysqli_fetch_assoc($perguntas)){ 
-                                       $id=$dados['id'];
-                                       $pesquisaid=$dados['pesquisa'];
-                                       $tema=$dados['tema'];
-                                       $nome=$dados['nome'];
-                                print " 
+                                while ($dados = mysqli_fetch_assoc($perguntas)) {
+                                    $id = $dados['id'];
+                                    $pesquisaid = $dados['pesquisa'];
+                                    $tema = $dados['tema'];
+                                    $nome = $dados['nome'];
+                                    print " 
                                        <tr>
                                  
                                     <td>$tema</td>
                                     <td>$nome</td>
                                  
-                                    <td>...</td>
+                               
                                 </tr>";
                                 }
                                 ?>
@@ -233,27 +282,27 @@
 <script src="../public/js/bootstrap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Mkizalu','Mcalcula','Manga','Pera'],
-      datasets: [{
-        label: '#Dados',
-        data: ['1','3','4','5'],
-        backgroundColor: [' rgb(176, 161, 27)', 'Blue', 'green', 'red'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['<?php echo $titulog; ?>'],
+            datasets: [{
+                label: '#Perguntas',
+                data: ['<?php print $valor; ?>'],
+                backgroundColor: [' rgb(176, 161, 27)', 'Blue', 'green', 'red'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
-    }
-  });
+    });
 </script>
 
 </html>

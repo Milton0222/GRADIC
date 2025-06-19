@@ -31,6 +31,21 @@
 
                   $qtddados=mysqli_num_rows($verificardados);
 
+                  //perguntas
+                  $sql="SELECT *from perguntas;";
+
+                  $verificar=mysqli_query($conexao,$sql);
+
+                  $qtdpergunta=mysqli_num_rows($verificar);
+
+                    //user
+                  $sql="SELECT *from utilizadores;";
+
+                  $verificar=mysqli_query($conexao,$sql);
+
+                  $qtduser=mysqli_num_rows($verificar);
+
+
                       //fechando conexao
                   mysqli_close($conexao);
 
@@ -41,8 +56,8 @@
                 <a href="dashboard.php">Dashboard</a>
             </div>
             <div class="search">
-                <form action="" method="get">
-                    <input type="search" name="" id="" placeholder="Informe um parametro" required>
+                 <form action="search.php" method="get">
+                    <input type="date" name="search" id="" placeholder="Informe um parametro" required>
                     <button type="submit">Ir</button>
                 </form>
             </div>
@@ -95,7 +110,7 @@
 
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+1</strong>
+                            <strong>+<?php print $qtduser;?></strong>
                         </div>
                         <div class="down">
                             <h2>Utilizador</h2>
@@ -105,7 +120,7 @@
                     <div class="cartao1">
                         <div class="up">
                             <a href="">Gerir</a>
-                            <strong>+1</strong>
+                            <strong>+<?php print $qtdpergunta;?></strong>
                         </div>
                         <div class="down">
                             <h2>Perguntas</h2>
