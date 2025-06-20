@@ -24,6 +24,8 @@
 
         $verificar = mysqli_query($conexao, $sql);
 
+      // var_dump($verificar);
+
         $sql = "SELECT *from pesquisas where user_id=$user_id;";
         $pesquisaveri = mysqli_query($conexao, $sql);
 

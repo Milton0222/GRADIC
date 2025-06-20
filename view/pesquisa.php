@@ -15,10 +15,7 @@
         include_once('../controller/validar.php');
         include_once('../controller/conexao.php');
          
-          $userid=$_SESSION['id'];
-
-       
-                  
+                 $userid=$_SESSION['id'];
 
 
                    //dados
@@ -174,7 +171,13 @@
 
                                       print " 
                                 <tr>
-                                    <th></th>
+                                    <th>
+                                         <form action='resultado.php' method='post'>
+                                                <input type='hidden' value='$id' name='idcode'>
+                                                <button type='submit' class='btn btn-success'>Info</button>
+                                            </div>        
+                                    
+                                    </th>
                             
                                     <td>$tema</td>
                                     

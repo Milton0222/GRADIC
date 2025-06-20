@@ -151,7 +151,7 @@
                                 <th>Descrição</th>
                                  <th>Opnião</th>
                                  <th>Número</th>
-                                 <th>Estátistica</th>
+                              
                                 <th>Metódo</th>
                             </thead>
                             <tbody>
@@ -170,7 +170,7 @@
                                     <td>$descricao</td>
                                     <td>$opniao</td>
                                     <td>$numero</td>
-                                    <td>$estatistica</td>
+                          
                                     
                                     <td>
                                         <div class='btn-group'>
