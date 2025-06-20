@@ -52,7 +52,7 @@
         <footer>
             
             <div class="info">
-                  <ul><li>@<?php $ano=date('Y'); echo $ano;?> <strong>Kizalu </strong>SOFT,LDA</li></ul>
+                  <ul><li>@<?php $ano=date('Y'); echo $ano;?> <strong>K</strong>S,2024</li></ul>
 
             </div>
             <div class="redes">
